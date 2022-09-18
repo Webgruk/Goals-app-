@@ -4,6 +4,8 @@ const colors = require('colors')
 require('dotenv').config()
 
 const goalRoutes = require('./routes/goalRoutes')
+const usersRoutes = require('./routes/userRoutes')
+
 const connectDB = require('./config/db')
 
 const port = process.env.PORT || 4000
@@ -16,5 +18,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/goals', goalRoutes)
+app.use('/api/users', usersRoutes)
+
 app.use(errorHandler)
 app.listen(port, () => console.log(`server started on ${port}`))
